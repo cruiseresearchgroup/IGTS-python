@@ -26,13 +26,13 @@ The repository is structured as follows:
 
 ## Code
 For `matlab` code, please refer to [this](https://github.com/cruiseresearchgroup/IGTS-matlab/blob/master/README.md). The python codes are available in `code/`. 
-	- `IGTS.py` includes following functions:
-		- "Clean_TS": This function normalizes the time series and doubles the number of the time series to address the hetergenousity in the time series.
-		- "DP_IGTS": Implementation of the dynamic programming for IGTS
-		- "TopDown_IGTS": Implementation of the TOP-Down algorithm for IGTS
-		- "IG_Cal": It calculates the information gain
-		- "Sh_Entropy": It calculates the entropy
-  - `demo_syntheticdata.py` is a demo script. 
+- `IGTS.py` includes following functions:
+- "Clean_TS": This function normalizes the time series and doubles the number of the time series to address the hetergenousity in the time series.
+- "DP_IGTS": Implementation of the dynamic programming for IGTS
+- "TopDown_IGTS": Implementation of the TOP-Down algorithm for IGTS
+- "IG_Cal": It calculates the information gain
+- "Sh_Entropy": It calculates the entropy
+- `demo_syntheticdata.py` is a demo script. 
 
 The input is m time series with the length of n that should be stored in an m*n matrix.
 
