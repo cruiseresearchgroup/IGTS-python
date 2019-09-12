@@ -21,7 +21,7 @@ This repository contains resources used and described in the paper.
 
 The repository is structured as follows:
 - `paper/`: Formal description of the algorithm and evaluation results
-- `code/`: The Matlab project code
+- `code/`: The python project code
 - `presentation/`: The presentation slides
 
 ## Code
