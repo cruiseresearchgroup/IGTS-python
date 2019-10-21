@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
+# author : Shohreh Deldari
+# https://github.com/cruiseresearchgroup/IGTS-python
+# Matlab Implementation : https://github.com/cruiseresearchgroup/IGTS-matlab
+# Reference to paper : 
+#### Sadri, Amin, Yongli Ren, and Flora D. Salim. "Information gain-based metric for recognizing transitions in human activities." Pervasive and Mobile Computing 38 (2017): 92-109. 
 import numpy as np
 
 # # TOPDOWN IGTS Approach
-
 def TopDown(Integ_TS,k,step,double):
     # pre processing
     Integ_TS = Clean_TS(Integ_TS,double);
@@ -23,16 +27,14 @@ def TopDown(Integ_TS,k,step,double):
             pos_TT[i] = j
             IG = IG_Cal(Integ_TS,pos_TT,i+1);
             if IG > maxIG[i]:  
-                print('set expTT i : ',i)
-                expTT = pos_TT
+                #rint('set expTT i : ',i)
+                expTT = pos_TT.copy()
                 maxIG[i] = IG
-        pos_TT=expTT; 
-    expTT=expTT[0:k];
-    return expTT, maxIG
+         pos_TT=expTT.copy(); 
+    return sorted(expTT[0:k]), maxIG
 
 
 # Dynamic Programing IGTS
-
 def DP_IGTS(Integ_TS,k,step,double):
     # pre processing
     Integ_TS = Clean_TS(Integ_TS,double);
@@ -75,7 +77,6 @@ def DP_IGTS(Integ_TS,k,step,double):
 
 
 # # SHANON ENTROPY Function
-
 def SH_Entropy(x):
 #     remove zeors
     x = x[(x != 0)]
@@ -85,7 +86,6 @@ def SH_Entropy(x):
 
 
 # #  Information Gain Calculation
-
 def IG_Cal(Integ_TS,pos,k):
     Num_TS = Integ_TS.shape[0]
     Len_TS = Integ_TS.shape[1]
@@ -108,7 +108,6 @@ def IG_Cal(Integ_TS,pos,k):
 
 
 # # CLEAN Time Series
-
 def Clean_TS(O_Integ_TS,double):
     Integ_TS=O_Integ_TS
     if Integ_TS.ndim == 1:
@@ -131,10 +130,3 @@ def Clean_TS(O_Integ_TS,double):
             sumVal=sum(to_append)/1000;
             Integ_TS = np.vstack((Integ_TS,np.array(to_append/sumVal)))
     return np.cumsum(Integ_TS,axis=1)
-
-
-
-
-
-
-
