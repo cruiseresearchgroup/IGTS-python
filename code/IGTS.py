@@ -124,9 +124,37 @@ def TopDown(Multivar_TS, k, step, double=1):
 
 
 # Dynamic Programing IGTS
-def DP_IGTS(Integ_TS,k,step,double):
+def DP_IGTS(Multivar_TS,k,step,double):
+    """
+    Dynamic Programming IGTS. This method of IGTS tries find the segment boundary
+    locations that create the maximum information gain using Dynamic Programming.
+
+    :param Multivar_TS: a numpy array of dimensions (amount of channels, time).
+    :param k: The amount of splits to find in the time series. Which makes the
+              amount of segments equal to k + 1(int)
+    :param step: The size of the steps to make when searching through the time
+                 series to find the heighest value. For instance, a step of 5
+                 will find the max IG out of 0...5...10 etc
+    :param double: paramater passed to Clean_TS for the purpose of removing
+                   correlation from the time series. Leaving it at 1 is reccomended
+
+    :return: (expTT,InformationGain)
+             expTT is a numpy array of integers of size = k
+             
+             expTT represents the positions of splits that are found to be optimal in
+             the time series. These splits are after the position they index,
+             for instance, if there is a 2 in the array, then {0,1,2} is one
+             segment and {3,4,5...} is another. The order of this array is
+             important, and is not sorted. The first element is the split that
+             was found to have the highest information gain, and the second has
+             the second heighest, etc.
+
+             Information Gain is floats represents the information gain of the whole time series
+             regards to estimated segment boundaries.
+             
+    """ 
     # pre processing
-    Integ_TS = Clean_TS(Integ_TS,double)
+    Integ_TS = Clean_TS(Multivar_TS,double)
     # get size of the input
     if Integ_TS.ndim == 1:
         Num_TS = 1
