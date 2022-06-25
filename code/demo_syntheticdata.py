@@ -29,4 +29,6 @@ Integ_TS = Integ_TS + noise
 DP_TT,_ =DP_IGTS(Integ_TS, k,1,1)
 print('Dynamic Programming extracted TT >>>' , DP_TT)
 
-
+# TopDown Approach
+TD_TT, IG_TT, knee =TopDown(Integ_TS, k,1,1)
+print('Top Down Approach:\n extracted  boundaries>>> {}\n Corresponding IG values >>> {} - knee point : {}'.format(TD_TT,IG_TT,knee))
