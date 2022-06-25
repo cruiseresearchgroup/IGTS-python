@@ -119,7 +119,7 @@ def TopDown(Multivar_TS, k, step, double=1):
         # If it's possible to calculate the curvature, do so and add it to p
         if i >= 1:
             p_arr[i] = (IG_arr[i] - IG_arr[i-1]) / (IG_arr[i + 1] - IG_arr[i])
-    knee = np.argmax(p_arr)
+    knee = np.argmax(p_arr) +1
     return tryTT,IG_arr,knee
 
 
